@@ -7,17 +7,16 @@
 </template>
 
 <script>
-  import BlogSection from "~/components/Sections/BlogSection"
-
-  import blogsEn from '~/contents/en/blogsEn.js'
+  import BlogSection from "~/components/Sections/BlogSection";
 
   export default {
-    async asyncData({app}) {
+    async asyncData({app, localeContents}) {
+      console.log('context');
+      const blogs = localeContents[app.i18n.locale];
+      console.log('localecontents', localeContents);
 
-      const blogs = app.i18n.locale === 'en' ? blogsEn : null;
-
-      async function asyncImport(blogName) {
-        const wholeMD = await import(`~/contents/${app.i18n.locale}/blog/${blogName}.md`);
+      async function asyncImport(entry) {
+        const wholeMD = await import(`~/contents/${app.i18n.locale}/blog/${entry}`);
         return wholeMD.attributes
       }
 
