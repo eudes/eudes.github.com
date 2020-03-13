@@ -7,11 +7,9 @@
 export default function (context) {
   let localeArticles;
   if (process.server) {
-    console.log('server');
     const getArticleIndex = require('../helpers/getArticleIndex');
     localeArticles = getArticleIndex();
   } else {
-    console.log('client');
     localeArticles = require('../static/_articles/articleIndex.js');
     if(localeArticles.default){
       localeArticles = localeArticles.default;
