@@ -5,45 +5,53 @@
         <h2>{{ $t('posts') }}</h2>
         <span class="emoji-title emoji--writing"/>
       </div>
-<!--      <LangSwitcher/>-->
+      <template v-if="multiLocaleEnabled === true">
+        <LangSwitcher/>
+      </template>
     </div>
     <ul class="articles">
       <article-card
         v-for="article in articles"
         :key="article.id"
-        :article="article" />
+        :article="article"/>
     </ul>
   </section>
 </template>
 <script>
-import ArticleCard from "~/components/ArticleCard.vue";
-import LangSwitcher from '~/components/LangSwitcher'
+  import ArticleCard from "~/components/ArticleCard.vue";
+  import LangSwitcher from '~/components/LangSwitcher'
 
-export default {
-  components: { ArticleCard, LangSwitcher },
-  props: {
-    articles: {
-      type: Array
+  export default {
+    components: {ArticleCard, LangSwitcher},
+    props: {
+      articles: {
+        type: Array
+      }
+    },
+    computed: {
+      multiLocaleEnabled() {
+        console.log("locale", process.env.multiLocaleEnabled);
+        return process.env.multiLocaleEnabled;
+      },
     }
   }
-}
 </script>
 <style lang="scss">
-.articles {
-  margin: 0;
+  .articles {
+    margin: 0;
 
-  @media (min-width: $screen-sm){
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 50px;
-    display: grid;
-  }
+    @media (min-width: $screen-sm) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 50px;
+      display: grid;
+    }
 
-  &__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 4rem;
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 4rem;
+    }
   }
-}
 </style>
 
