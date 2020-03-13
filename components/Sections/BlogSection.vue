@@ -5,7 +5,7 @@
         <h2>{{ $t('posts') }}</h2>
         <span class="emoji-title emoji--writing"/>
       </div>
-      <LangSwitcher/>
+<!--      <LangSwitcher/>-->
     </div>
     <ul class="blogs">
       <blog-card
@@ -31,7 +31,7 @@ export default {
 <style lang="scss">
 .blogs {
   margin: 0;
-  
+
   @media (min-width: $screen-sm){
     grid-template-columns: 1fr 1fr;
     grid-gap: 50px;

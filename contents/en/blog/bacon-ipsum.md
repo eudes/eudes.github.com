@@ -1,6 +1,6 @@
 ---
 name: 'bacon-ipsum'
-title: Bacon Ipsum
+title: Something something
 year: 28 May 2019
 id: 'bacon-ipsum'
 description: |
