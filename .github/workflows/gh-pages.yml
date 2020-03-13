@@ -2,7 +2,7 @@
 
 name: Publish to Github Pages
 
-# Controls when the action will run. Triggers the workflow on push or pull request 
+# Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
@@ -24,10 +24,10 @@ jobs:
     - name: install
       run: npm install
     - name: generate
-      run: npm run generate
+      run: npm run generate:gh-pages
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.3.0
-      with:        
+      with:
         # Git branch where assets will be deployed
         target_branch: master
         # Create incremental commit instead of doing push force
