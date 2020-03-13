@@ -22,16 +22,11 @@ const md = new MarkdownIt({
 });
 md.use(mip);
 
-const productionUrl = {
-  en: "/en",
-};
-const baseUrl = 'https://marinaaisa.com';
+// only add `router.base = '/<repository-name>/'` if `DEPLOY_ENV` is `GH_PAGES`
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ?
+  {base: '/eudes.github.com/'} : {};
 
 module.exports = {
-  env: {
-    baseUrl,
-    productionUrl
-  },
   head: {
     title: 'Marina Aisa | Product Designer & Front-end Developer',
     meta: [
@@ -146,9 +141,11 @@ module.exports = {
     routes: [
       '/es', '404'
     ]
-    .concat(getPaths('en', 'article'))
+      .concat(getPaths('en', 'article'))
   },
   router: {
-    middleware: 'articleIndex'
+    ...routerBase,
+    middleware: 'articleIndex',
+
   }
 };
