@@ -118,7 +118,7 @@
         return `/images/article/${this.id}/_thumbnail.jpg`;
       },
       pageTitle () {
-        return this.title + ' – Marina Aisa';
+        return `${this.title} - ${this.$t('indexPageHead.title')}`;
       },
       showLocales () {
         return this.$i18n.locales.filter(locale => locale.code !== this.$i18n.locale)

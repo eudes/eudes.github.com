@@ -27,8 +27,14 @@ const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ?
   {base: '/eudes.github.com/'} : {};
 
 module.exports = {
+  buildModules: [
+    // Simple usage
+    '@nuxtjs/dotenv',
+
+    // With options
+    ['@nuxtjs/dotenv', { /* module options */ }]
+  ],
   head: {
-    title: 'Marina Aisa | Product Designer & Front-end Developer',
     meta: [
       {charset: 'utf-8'},
       {
@@ -40,7 +46,7 @@ module.exports = {
       {name: 'theme-color', content: '#c1c1c1'},
       {name: 'robots', content: 'index, follow'},
       {name: 'twitter:card', content: 'summary_large_image'},
-      {name: 'twitter:site', content: '@marinaaisa'},
+      {name: 'twitter:site', content: '@eudes'},
       {property: 'og:type', content: 'profile'},
       {property: 'og:updated_time', content: builtAt}
     ],

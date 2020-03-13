@@ -46,7 +46,7 @@
         },
         script: [{src: 'https://identity.netlify.com/v1/netlify-identity-widget.js'}],
         meta: [
-          {name: "author", content: "Marina Aisa"},
+          {name: "author", content: process.env.meta_author},
           {
             name: "description",
             property: "og:description",
