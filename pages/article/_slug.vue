@@ -115,7 +115,7 @@
 
     computed: {
       ogImage () {
-        return `${process.env.baseUrl}/images/article/${this.id}/_thumbnail.jpg`;
+        return `/images/article/${this.id}/_thumbnail.jpg`;
       },
       pageTitle () {
         return this.title + ' – Marina Aisa';
@@ -130,7 +130,7 @@
         return {
           hid: 'alternate-hreflang-' + this.showLocales[0].iso,
           rel: 'alternate',
-          href: `${process.env.baseUrl + (this.showLocales[0].code === 'en' ? '' : '/es')}/article/${this.trans}`,
+          href: `${(this.showLocales[0].code === 'en' ? '' : '/es')}/article/${this.trans}`,
           hreflang: this.showLocales[0].code
         }
       },
