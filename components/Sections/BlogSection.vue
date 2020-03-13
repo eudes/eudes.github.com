@@ -9,9 +9,9 @@
     </div>
     <ul class="blogs">
       <blog-card
-        v-for="blog in blogs"
-        :key="blog.name"
-        :blog="blog" />
+        v-for="entry in contents"
+        :key="entry.id"
+        :blog="entry" />
     </ul>
   </section>
 </template>
@@ -22,7 +22,7 @@ import LangSwitcher from '~/components/LangSwitcher'
 export default {
   components: { BlogCard, LangSwitcher },
   props: {
-    blogs: {
+    contents: {
       type: Array
     }
   }
