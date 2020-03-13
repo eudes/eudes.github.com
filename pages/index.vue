@@ -1,72 +1,63 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        eudes.github.com
-      </h1>
-      <h2 class="subtitle">
-        eudes.es site
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="page-index">
+    <div class="container">
+      <BlogSection :blogs="blogs"/>
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+  import BlogSection from "~/components/Sections/BlogSection"
 
-export default {
-  components: {
-    Logo
+  import blogsEn from '~/contents/en/blogsEn.js'
+  import blogsEs from '~/contents/es/blogsEs.js'
+
+  export default {
+    async asyncData ({app}) {
+
+      const blogs = app.i18n.locale === 'en' ? blogsEn : blogsEs
+      
+      async function asyncImport (blogName) {
+        const wholeMD = await import(`~/contents/${app.i18n.locale}/blog/${blogName}.md`)
+        return wholeMD.attributes
+      }
+
+      return Promise.all(blogs.map(blog => asyncImport(blog)))
+      .then((res) => {
+        return {
+          blogs: res
+        }
+      })
+    },
+    
+    components: { BlogSection },
+
+    transition: {
+      name: 'slide-fade'
+    },
+
+    head () {
+      return {
+        title: this.$t('indexPageHead.title'),
+        htmlAttrs: {
+          lang: this.$i18n.locale,
+        },
+        script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
+        meta: [
+          { name: "author", content: "Marina Aisa" },
+          { name: "description", property: "og:description", content: this.$t('indexPageHead.description'), hid: "description" },
+          { property: "og:title", content: this.$t('indexPageHead.title') },
+          { property: "og:image", content: this.ogImage },
+          { name: "twitter:description", content: this.$t('indexPageHead.description') },
+          { name: "twitter:image", content: this.ogImage }
+        ]
+      };
+    },
+
+    computed: {
+      ogImage: function () {
+        return;
+      }
+    }
   }
-}
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
