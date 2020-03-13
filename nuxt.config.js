@@ -1,13 +1,13 @@
-const builtAt = new Date().toISOString()
-const path = require('path')
-const { I18N } = require('./locales/i18n-nuxt-config')
+const builtAt = new Date().toISOString();
+const path = require('path');
+const { I18N } = require('./locales/i18n-nuxt-config');
 import fs from 'fs'
 import Mode from "frontmatter-markdown-loader/mode"
 import MarkdownIt from 'markdown-it'
 import mip from 'markdown-it-prism'
 
 function getPaths (lang, type) {
-  let initial = lang
+  let initial = lang;
   if (lang === 'en') { initial = '' }
   return fs.readdirSync(path.resolve(__dirname, 'contents', `${lang}/${type}`))
     .filter(filename => path.extname(filename) === '.md')
@@ -17,12 +17,11 @@ function getPaths (lang, type) {
 const md = new MarkdownIt({
   html: true,
   typographer: true
-})
-md.use(mip)
+});
+md.use(mip);
 
 const productionUrl = {
   en: "/en",
-  es: "/es"
 };
 const baseUrl = 'https://marinaaisa.com';
 
@@ -80,8 +79,8 @@ module.exports = {
 
   build: {
     extend (config) {
-      const rule = config.module.rules.find(r => r.test.toString() === '/\\.(png|jpe?g|gif|svg|webp)$/i')
-      config.module.rules.splice(config.module.rules.indexOf(rule), 1)
+      const rule = config.module.rules.find(r => r.test.toString() === '/\\.(png|jpe?g|gif|svg|webp)$/i');
+      config.module.rules.splice(config.module.rules.indexOf(rule), 1);
 
       config.module.rules.push({
         test: /\.md$/,
@@ -116,7 +115,7 @@ module.exports = {
     }
   },
   plugins: ['~/plugins/lazyload', '~/plugins/globalComponents', { src: '~plugins/ga.js', ssr: false }],
-  modules: [  
+  modules: [
     '@nuxtjs/style-resources',
     ['nuxt-i18n', I18N],
     'nuxt-webfontloader'
@@ -142,7 +141,6 @@ module.exports = {
     routes: [
       '/es', '404'
     ]
-    .concat(getPaths('es', 'blog'))
     .concat(getPaths('en', 'blog'))
   }
-}
+};

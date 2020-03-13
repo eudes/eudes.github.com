@@ -17,7 +17,7 @@
     },
 
     created () {
-      this.templateRender = eval(this.renderFunc)
+      this.templateRender = eval(this.renderFunc);
       this.$options.staticRenderFns = eval(this.staticRenderFuncs)
     }
   }

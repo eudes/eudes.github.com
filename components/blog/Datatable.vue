@@ -87,7 +87,7 @@ const columns = [
     title: 'Song',
     value: 'song'
   }
-]
+];
 
 const rowsSample = [
   {
@@ -115,7 +115,7 @@ const rowsSample = [
     country: 'England',
     song: 'Another Love'
   }
-]
+];
 
 export default {
   name: 'Datatable',
@@ -236,7 +236,7 @@ export default {
 
   thead {
     color: $grey-2;
-  
+
     tr {
       display: grid;
       margin-bottom: 8px;
@@ -294,7 +294,7 @@ export default {
     border-radius: 8px;
     background: lighten(black, 85%);
     height: 12px;
-  
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -326,7 +326,7 @@ export default {
       &:nth-child(2) {
         animation-delay: .5s;
       }
-  
+
       &:nth-child(3) {
         animation-delay: 1s;
       }
@@ -351,7 +351,7 @@ export default {
       }
     }
 
-    
+
     &.blend {
       &::before {
         mix-blend-mode: overlay;

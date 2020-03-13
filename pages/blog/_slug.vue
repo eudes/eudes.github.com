@@ -62,8 +62,8 @@
   export default {
 
     async asyncData ({params, app}) {
-      const fileContent = await import(`~/contents/${app.i18n.locale}/blog/${params.slug}.md`)
-      const attr = fileContent.attributes
+      const fileContent = await import(`~/contents/${app.i18n.locale}/blog/${params.slug}.md`);
+      const attr = fileContent.attributes;
       return {
         name: params.slug,
         title: attr.title,
