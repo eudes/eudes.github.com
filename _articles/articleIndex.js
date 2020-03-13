@@ -1,0 +1,1 @@
+export default {"en":["bacon-ipsum.md"]}
