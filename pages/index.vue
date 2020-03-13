@@ -1,13 +1,13 @@
 <template>
   <div class="page-index">
     <div class="container">
-      <BlogSection :contents="contents"/>
+      <ArticleSection :contents="contents"/>
     </div>
   </div>
 </template>
 
 <script>
-  import BlogSection from "~/components/Sections/BlogSection";
+  import ArticleSection from "~/components/Sections/ArticleSection";
 
   export default {
     async asyncData({app, localeContents}) {
@@ -16,8 +16,8 @@
       console.log('localecontents', localeContents);
 
       async function asyncImport(fileName) {
-        const wholeMD = await import(`~/contents/${app.i18n.locale}/blog/${fileName}`);
-        // remove .md
+        const wholeMD = await import(`~/contents/${app.i18n.locale}/article/${fileName}`);
+        // remove ".md"
         const id = fileName.substring(0, fileName.length - 3);
         const entry = {
           id: id,
@@ -27,7 +27,7 @@
         return entry;
       }
 
-      return Promise.all(contents.map(blog => asyncImport(blog)))
+      return Promise.all(contents.map(article => asyncImport(article)))
         .then((res) => {
           return {
             contents: res
@@ -35,7 +35,7 @@
         })
     },
 
-    components: {BlogSection},
+    components: {ArticleSection},
 
     transition: {
       name: 'slide-fade'

@@ -1,5 +1,5 @@
 <template>
-  <div class="blogSelected">
+  <div class="articleSelected">
     <div class="intro">
       <div class="elevate-cover">
         <div class="elevate-cover__textOffset">
@@ -12,13 +12,13 @@
             </nuxt-link>
           </div>
           <div class="elevate-cover__left">
-            <span class="blogSelected-year">{{ year }}</span>
+            <span class="articleSelected-year">{{ year }}</span>
             —
             <template v-if="trans">
               <nuxt-link
                 v-for="(locale, i) in showLocales"
                 :key="i"
-                :to="`${locale.code == 'en' ? '' : '/' + locale.code}/blog/${trans}`"
+                :to="`${locale.code == 'en' ? '' : '/' + locale.code}/article/${trans}`"
               >
                   {{ $t('changeLanguagePost') }}
               </nuxt-link>
@@ -31,11 +31,11 @@
           </div>
         </div>
         <ImageResponsive
-          :imageURL="'blog/' + id + '/_main.jpg'"
+          :imageURL="'article/' + id + '/_main.jpg'"
           v-if="!noMainImage"
           width="100%"
           class="elevate-cover__img"
-          :alt="'Blog picture'" />
+          :alt="'Article picture'" />
         <component
           v-else
           class="elevate-cover__img"
@@ -62,7 +62,7 @@
   export default {
 
     async asyncData ({params, app}) {
-      const fileContent = await import(`~/contents/${app.i18n.locale}/blog/${params.slug}.md`);
+      const fileContent = await import(`~/contents/${app.i18n.locale}/article/${params.slug}.md`);
       const attr = fileContent.attributes;
       return {
         name: params.slug,
@@ -115,7 +115,7 @@
 
     computed: {
       ogImage () {
-        return `${process.env.baseUrl}/images/blog/${this.id}/_thumbnail.jpg`;
+        return `${process.env.baseUrl}/images/article/${this.id}/_thumbnail.jpg`;
       },
       pageTitle () {
         return this.title + ' – Marina Aisa';
@@ -130,7 +130,7 @@
         return {
           hid: 'alternate-hreflang-' + this.showLocales[0].iso,
           rel: 'alternate',
-          href: `${process.env.baseUrl + (this.showLocales[0].code === 'en' ? '' : '/es')}/blog/${this.trans}`,
+          href: `${process.env.baseUrl + (this.showLocales[0].code === 'en' ? '' : '/es')}/article/${this.trans}`,
           hreflang: this.showLocales[0].code
         }
       },
@@ -139,7 +139,7 @@
         if (!this.extraComponent) {
           return null
         }
-        return () => import(`~/components/blog/${this.extraComponent}.vue`)
+        return () => import(`~/components/article/${this.extraComponent}.vue`)
       }
     }
   }
@@ -149,7 +149,7 @@
 .overflowhidden {
   overflow: hidden;
 }
-.blogSelected-horizontalImage {
+.articleSelected-horizontalImage {
   height: 56rem;
   background-size: contain;
   transition: all ease .35s;

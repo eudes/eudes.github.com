@@ -1,26 +1,26 @@
 <template>
   <section>
-    <div class="blogs__top">
+    <div class="articles__top">
       <div>
         <h2>{{ $t('posts') }}</h2>
         <span class="emoji-title emoji--writing"/>
       </div>
 <!--      <LangSwitcher/>-->
     </div>
-    <ul class="blogs">
-      <blog-card
+    <ul class="articles">
+      <article-card
         v-for="entry in contents"
         :key="entry.id"
-        :blog="entry" />
+        :article="entry" />
     </ul>
   </section>
 </template>
 <script>
-import BlogCard from "~/components/BlogCard.vue";
+import ArticleCard from "~/components/ArticleCard.vue";
 import LangSwitcher from '~/components/LangSwitcher'
 
 export default {
-  components: { BlogCard, LangSwitcher },
+  components: { ArticleCard, LangSwitcher },
   props: {
     contents: {
       type: Array
@@ -29,7 +29,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.blogs {
+.articles {
   margin: 0;
 
   @media (min-width: $screen-sm){
