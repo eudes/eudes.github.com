@@ -69,7 +69,7 @@
         title: attr.title,
         trans: attr.trans,
         year: attr.year,
-        id: attr.id,
+        id: params.slug,
         cardAlt: attr.cardAlt,
         noMainImage: attr.noMainImage,
         description: attr.description,
