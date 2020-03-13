@@ -3,7 +3,7 @@ const {resolve, extname} = require('path');
 
 const indir = resolve('./contents/');
 
-module.exports = function getContentsIndex() {
+module.exports = function getArticleIndex() {
   const localeContents = {};
   const dir = readdirSync(indir);
   for (let locale of dir) {

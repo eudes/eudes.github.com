@@ -62,8 +62,8 @@
   export default {
 
     async asyncData ({params, app}) {
-      const fileContent = await import(`~/contents/${app.i18n.locale}/article/${params.slug}.md`);
-      const attr = fileContent.attributes;
+      const article = await import(`~/contents/${app.i18n.locale}/article/${params.slug}.md`);
+      const attr = article.attributes;
       return {
         name: params.slug,
         id: params.slug,
@@ -74,8 +74,8 @@
         noMainImage: attr.noMainImage,
         description: attr.description,
         extraComponent: attr.extraComponent,
-        renderFunc: `(${fileContent.vue.render})`,
-        staticRenderFuncs: `[${fileContent.vue.staticRenderFns}]`,
+        renderFunc: `(${article.vue.render})`,
+        staticRenderFuncs: `[${article.vue.staticRenderFns}]`,
         image: {
           main: attr.image && attr.image.main,
           og: attr.image && attr.image.og
