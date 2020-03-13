@@ -1,41 +1,38 @@
 <template>
   <div class="page-index">
     <div class="container">
-      <ArticleSection :contents="contents"/>
+      <ArticleListSection :articles="articles"/>
     </div>
   </div>
 </template>
 
 <script>
-  import ArticleSection from "~/components/Sections/ArticleSection";
+  import ArticleListSection from "~/components/Sections/ArticleListSection";
 
   export default {
-    async asyncData({app, localeContents}) {
-      console.log('context');
-      const contents = localeContents[app.i18n.locale];
-      console.log('localecontents', localeContents);
+    async asyncData({app, localeArticles}) {
+      const articles = localeArticles[app.i18n.locale];
 
       async function asyncImport(fileName) {
         const wholeMD = await import(`~/contents/${app.i18n.locale}/article/${fileName}`);
+
         // remove ".md"
         const id = fileName.substring(0, fileName.length - 3);
-        const entry = {
+        return {
           id: id,
-        ...wholeMD.attributes
+          ...wholeMD.attributes
         };
-        console.log(entry);
-        return entry;
       }
 
-      return Promise.all(contents.map(article => asyncImport(article)))
+      return Promise.all(articles.map(asyncImport))
         .then((res) => {
           return {
-            contents: res
+            articles: res
           }
         })
     },
 
-    components: {ArticleSection},
+    components: {ArticleListSection},
 
     transition: {
       name: 'slide-fade'

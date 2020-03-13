@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "npm run build:contents && nuxt",
     "build": "run-s build:contents build:generate",
-    "build:contents": "node helpers/generateContentsIndex.js",
+    "build:contents": "node helpers/generateArticleIndex.js",
     "build:generate": "nuxt generate",
     "analyze": "nuxt build --analyze"
   },

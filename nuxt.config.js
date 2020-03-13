@@ -149,6 +149,6 @@ module.exports = {
     .concat(getPaths('en', 'article'))
   },
   router: {
-    middleware: 'contentsindex'
+    middleware: 'articleIndex'
   }
 };

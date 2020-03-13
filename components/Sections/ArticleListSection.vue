@@ -9,9 +9,9 @@
     </div>
     <ul class="articles">
       <article-card
-        v-for="entry in contents"
-        :key="entry.id"
-        :article="entry" />
+        v-for="article in articles"
+        :key="article.id"
+        :article="article" />
     </ul>
   </section>
 </template>
@@ -22,7 +22,7 @@ import LangSwitcher from '~/components/LangSwitcher'
 export default {
   components: { ArticleCard, LangSwitcher },
   props: {
-    contents: {
+    articles: {
       type: Array
     }
   }
