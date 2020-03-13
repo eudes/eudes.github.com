@@ -66,10 +66,10 @@
       const attr = fileContent.attributes;
       return {
         name: params.slug,
+        id: params.slug,
         title: attr.title,
         trans: attr.trans,
         year: attr.year,
-        id: params.slug,
         cardAlt: attr.cardAlt,
         noMainImage: attr.noMainImage,
         description: attr.description,

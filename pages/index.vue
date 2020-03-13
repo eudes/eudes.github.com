@@ -1,7 +1,7 @@
 <template>
   <div class="page-index">
     <div class="container">
-      <BlogSection :blogs="blogs"/>
+      <BlogSection :contents="contents"/>
     </div>
   </div>
 </template>
@@ -12,18 +12,25 @@
   export default {
     async asyncData({app, localeContents}) {
       console.log('context');
-      const blogs = localeContents[app.i18n.locale];
+      const contents = localeContents[app.i18n.locale];
       console.log('localecontents', localeContents);
 
-      async function asyncImport(entry) {
-        const wholeMD = await import(`~/contents/${app.i18n.locale}/blog/${entry}`);
-        return wholeMD.attributes
+      async function asyncImport(fileName) {
+        const wholeMD = await import(`~/contents/${app.i18n.locale}/blog/${fileName}`);
+        // remove .md
+        const id = fileName.substring(0, fileName.length - 3);
+        const entry = {
+          id: id,
+        ...wholeMD.attributes
+        };
+        console.log(entry);
+        return entry;
       }
 
-      return Promise.all(blogs.map(blog => asyncImport(blog)))
+      return Promise.all(contents.map(blog => asyncImport(blog)))
         .then((res) => {
           return {
-            blogs: res
+            contents: res
           }
         })
     },
