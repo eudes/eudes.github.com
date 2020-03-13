@@ -36,5 +36,7 @@ jobs:
         build_dir: dist
         # Write the given domain name to the CNAME file
         fqdn: eudes.es
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: finish
       run: echo 'Finished'
