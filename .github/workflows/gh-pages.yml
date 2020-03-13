@@ -21,10 +21,13 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
+
     - name: install
       run: npm install
+
     - name: generate
-      run: npm run generate:gh-pages
+      run: npm run build
+
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.3.0
       with:
