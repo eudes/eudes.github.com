@@ -1,19 +1,19 @@
 <template>
-  <li class="blog">
+  <li class="article">
     <nuxt-link
-      :to="localePath({ name: 'blog-slug', params: { slug: blog.id }})"
+      :to="localePath({ name: 'article-slug', params: { slug: article.id }})"
     >
       <ImageResponsive
-        :imageURL="`blog/${blog.id}/_thumbnail.jpg`"
+        :imageURL="`article/${article.id}/_thumbnail.jpg`"
         :classes="'cardThumbnail'"
         :width="'952'"
         :height="'509'"
-        :alt="blog.cardAlt" />
-      <h3 class="blog__title">
-        {{ blog.title }}
+        :alt="article.cardAlt" />
+      <h3 class="article__title">
+        {{ article.title }}
       </h3>
-      <p class="blog__description">
-        {{ blog.description }}
+      <p class="article__description">
+        {{ article.description }}
       </p>
     </nuxt-link>
   </li>
@@ -22,7 +22,7 @@
 <script lang="js">
   export default {
     props: {
-      blog: {
+      article: {
         type: Object
       }
     }
@@ -37,7 +37,7 @@
       opacity: 1;
     }
   }
-  .blog {
+  .article {
 
     @media (min-width: $screen-sm){
       padding-bottom: 0;
@@ -48,7 +48,7 @@
     }
 
     &:hover {
-      .blog__title {
+      .article__title {
         color: $primary;
       }
     }

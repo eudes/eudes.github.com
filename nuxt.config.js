@@ -146,7 +146,7 @@ module.exports = {
     routes: [
       '/es', '404'
     ]
-    .concat(getPaths('en', 'blog'))
+    .concat(getPaths('en', 'article'))
   },
   router: {
     middleware: 'contentsindex'

@@ -7,7 +7,7 @@ module.exports = function getContentsIndex() {
   const localeContents = {};
   const dir = readdirSync(indir);
   for (let locale of dir) {
-    localeContents[locale] = readdirSync(`${indir}/${locale}/blog`)
+    localeContents[locale] = readdirSync(`${indir}/${locale}/article`)
       .filter(filename => extname(filename) === '.md');
   }
 
