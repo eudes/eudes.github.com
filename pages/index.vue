@@ -44,7 +44,6 @@
         htmlAttrs: {
           lang: this.$i18n.locale,
         },
-        script: [{src: 'https://identity.netlify.com/v1/netlify-identity-widget.js'}],
         meta: [
           {name: "author", content: process.env.meta_author},
           {

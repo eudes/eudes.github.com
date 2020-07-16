@@ -30,9 +30,6 @@ module.exports = {
   buildModules: [
     // Simple usage
     '@nuxtjs/dotenv',
-
-    // With options
-    ['@nuxtjs/dotenv', { /* module options */ }]
   ],
   head: {
     meta: [
@@ -120,7 +117,7 @@ module.exports = {
       });
     }
   },
-  plugins: ['~/plugins/lazyload', '~/plugins/globalComponents', {src: '~plugins/ga.js', ssr: false}],
+  plugins: ['~/plugins/lazyload', '~/plugins/globalComponents',],
   modules: [
     '@nuxtjs/style-resources',
     ['nuxt-i18n', I18N],
