@@ -1,1 +1,1 @@
-export default {"en":["bacon-ipsum.md"]}
+export default {"en":["game-dev.md","notes-on-development.md","the-brag.md"]}
