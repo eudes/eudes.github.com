@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{129:function(e,n,t){"use strict";t.r(n),n.default={credits:'a blog by <a target="_blank" href="https://eudes.es/" class="ani"><span>eudes ochoa</span></a>'}}}]);

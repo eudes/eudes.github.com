@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{130:function(o,e,n){"use strict";n.r(e),e.default={title:"Eudes Ochoa",description:"a blog"}}}]);
