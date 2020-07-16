@@ -1,5 +1,5 @@
 ---
-title: My Brag file
+title: Brag file
 year: 16 July 2020
 ---
 ## What's this
