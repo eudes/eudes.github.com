@@ -1,1 +1,1 @@
-export default {"en":["game-dev.md","notes-on-development.md","the-brag.md"]}
+export default {"en":["the-brag.md"]}
