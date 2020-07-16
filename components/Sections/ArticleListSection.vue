@@ -30,7 +30,6 @@
     },
     computed: {
       multiLocaleEnabled() {
-        console.log("locale", process.env.multiLocaleEnabled);
         return process.env.multiLocaleEnabled;
       },
     }
