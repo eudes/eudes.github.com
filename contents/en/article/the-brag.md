@@ -4,7 +4,7 @@ year: 16 July 2020
 ---
 ## What's this
 A list of things I've been doing that I think deserve some merit.
-Motivated by [Julia Evan's article](https://jvns.ca/blog/brag-documents/).
+Motivated by [Julia Evans' article](https://jvns.ca/blog/brag-documents/).
 
 # July 2020
 - My code now moves money around the planet.
