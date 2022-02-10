@@ -28,7 +28,7 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "frontmatter-markdown-loader": "^3.6.0",
     "fs-extra": "latest",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "responsive-loader": "^1.2.0",
     "sass-loader": "^8.0.2",
     "sharp": "^0.23.4"
